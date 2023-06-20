@@ -18,7 +18,7 @@ function upsert(array, item) {
 }
 // ------------
 var corsOptions = {
-  origin: "https://manzer-re-front-accf4n8by-istinnie.vercel.app/",
+  origin: "http://localhost:3000",
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
