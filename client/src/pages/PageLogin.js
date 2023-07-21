@@ -33,7 +33,6 @@ const PageLogin = () => {
   const fetchGetUser = async () => {
     await axios
       .get(process.env.REACT_APP_HOST_USER + "/" + loginData.email)
-      //.get(`http://localhost:5000/api/user/aaaaa`)
       .then((response) => {
         setgetUser(response.data[0]);
         setJoke([...Joke, response.data[0]]);
