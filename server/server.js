@@ -25,7 +25,11 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// app.use(express.static("public"));
+
 app.use(express.json());
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenue sur Manzer.re" });
