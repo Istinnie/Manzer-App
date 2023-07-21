@@ -10,6 +10,7 @@ const client = new OAuth2Client(process.env.REACT_APP_CLIENT_ID);
 const app = express();
 
 // login
+// ------------------------
 const users = [];
 function upsert(array, item) {
   const i = array.findIndex((_item) => _item.email === item.email);
@@ -17,11 +18,10 @@ function upsert(array, item) {
   else array.push(item);
 }
 // ------------
-// var corsOptions = {
-//   origin: "https://manzer-re-front.vercel.app/",
-// };
-// app.use(cors(corsOptions));
-app.use(cors());
+var corsOptions = {
+  origin: "https://manzer-re-front.vercel.app/",
+};
+app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
 });
 
 // route vers le google api
+// -------------------------------
 app.post("/api/google-login", async (req, res) => {
   const { token } = req.body;
   const ticket = await client.verifyIdToken({
@@ -50,7 +51,7 @@ app.post("/api/google-login", async (req, res) => {
 });
 
 // connexion à la base de données
-
+// -------------------------------
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
@@ -65,10 +66,12 @@ db.mongoose
   });
 
 // route
+// -------------------------------
 require("./routes/repas.routes")(app);
 require("./routes/user.routes")(app);
 
 // set port, listen for requests
+// -------------------------------
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
