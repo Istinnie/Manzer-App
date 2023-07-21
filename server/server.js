@@ -17,10 +17,11 @@ function upsert(array, item) {
   else array.push(item);
 }
 // ------------
-var corsOptions = {
-  origin: "https://manzer-re-front.vercel.app/",
-};
-app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: "https://manzer-re-front.vercel.app/",
+// };
+// app.use(cors(corsOptions));
+app.use(cors());
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
